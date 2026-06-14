@@ -54,3 +54,38 @@ def match_job(cv_text: str, job_description: str) -> str:
     """
     response = model.generate_content(prompt)
     return response.text
+
+def generate_interview_questions(cv_text: str, job_description: str) -> str:
+    prompt = f"""
+    You are an expert interview coach. Based on this CV and job description, generate interview questions.
+    
+    Provide:
+    1. 5 Technical questions specific to their skills
+    2. 5 Behavioral questions based on their experience
+    3. 3 CV-specific questions (based on their actual projects/experience)
+    4. Ideal answer tips for each question
+
+    CV:
+    {cv_text}
+
+    Job Description:
+    {job_description}
+
+    Respond in JSON format like this:
+    {{
+        "technical": [
+            {{"question": "...", "tip": "..."}},
+            {{"question": "...", "tip": "..."}}
+        ],
+        "behavioral": [
+            {{"question": "...", "tip": "..."}},
+            {{"question": "...", "tip": "..."}}
+        ],
+        "cv_specific": [
+            {{"question": "...", "tip": "..."}},
+            {{"question": "...", "tip": "..."}}
+        ]
+    }}
+    """
+    response = model.generate_content(prompt)
+    return response.text
