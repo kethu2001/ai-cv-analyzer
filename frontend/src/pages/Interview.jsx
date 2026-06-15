@@ -96,8 +96,10 @@ function Interview() {
         disabled={!file || !jobDesc || loading}
         className="w-full bg-violet-600 hover:bg-violet-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl transition-all duration-200 text-lg mb-8"
       >
-        {loading && <Loader message="Generating your interview questions..." />}
+        {loading ? '🤖 Generating Questions...' : '🎯 Generate Interview Questions'}
       </button>
+
+      {loading && <Loader message="Generating your interview questions..." />}
 
       {error && <p className="text-red-400 text-center mb-6">{error}</p>}
 
