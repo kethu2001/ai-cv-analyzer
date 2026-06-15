@@ -19,7 +19,7 @@ function Navbar() {
   return (
     <nav className="border-b border-gray-800 bg-gray-950/80 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        
+
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-violet-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
             IQ
@@ -33,6 +33,7 @@ function Navbar() {
           {navLink('/', 'Home')}
           {navLink('/analyze', 'Analyze CV')}
           {navLink('/match', 'Job Match')}
+          {navLink('/interview', 'Interview Prep')}
         </div>
       </div>
     </nav>

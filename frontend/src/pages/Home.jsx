@@ -18,9 +18,9 @@ function Home() {
       desc: 'Automatically generate a personalized cover letter tailored to the job you are applying for.'
     },
     {
-      icon: '📈',
-      title: 'Career Insights',
-      desc: 'Understand what skills are in demand and get recommendations to boost your career prospects.'
+      icon: '🎤',
+      title: 'Interview Prep',
+      desc: 'Get personalized technical, behavioral and CV-specific interview questions with expert answer tips.'
     }
   ]
 
