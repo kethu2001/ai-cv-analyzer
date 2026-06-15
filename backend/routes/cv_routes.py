@@ -14,7 +14,8 @@ async def analyze_cv_route(file: UploadFile = File(...)):
     result = analyze_cv(cv_text)
     cleaned = re.sub(r"```json|```", "", result).strip()
     parsed = json.loads(cleaned)
-    # Save to MongoDB
+
+    
     save_analysis(file.filename, parsed)
     return parsed
 
@@ -28,7 +29,7 @@ async def match_job_route(
     result = match_job(cv_text, job_description)
     cleaned = re.sub(r"```json|```", "", result).strip()
     parsed = json.loads(cleaned)
-    # Save to MongoDB
+    
     save_match(file.filename, job_description, parsed)
     return parsed
 
@@ -42,6 +43,7 @@ async def interview_questions_route(
     result = generate_interview_questions(cv_text, job_description)
     cleaned = re.sub(r"```json|```", "", result).strip()
     parsed = json.loads(cleaned)
+
     # Save to MongoDB
     save_interview(file.filename, job_description, parsed)
     return parsed

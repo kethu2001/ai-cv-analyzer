@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import cv_routes #, job_routes
+from routes import cv_routes 
 
 app = FastAPI(title="AI Career Coach API")
 
@@ -13,7 +13,6 @@ app.add_middleware(
 )
 
 app.include_router(cv_routes.router, prefix="/api/cv")
-# app.include_router(job_routes.router, prefix="/api/job")
 
 @app.get("/")
 def root():
