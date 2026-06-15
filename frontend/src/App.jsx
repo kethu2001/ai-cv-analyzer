@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Analyze from './pages/Analyze'
 import Match from './pages/Match'
 import Interview from './pages/Interview'
+import History from './pages/History'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/analyze" element={<Analyze />} />
           <Route path="/match" element={<Match />} />
           <Route path="/interview" element={<Interview />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       </div>
     </Router>
