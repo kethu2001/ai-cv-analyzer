@@ -1,14 +1,15 @@
-import google.generativeai as genai
+from google import genai
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-model = genai.GenerativeModel("gemini-2.5-flash")
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+MODEL = "gemini-2.0-flash"
+#model = genai.GenerativeModel("gemini-2.5-flash")
+#model = genai.GenerativeModel("gemini-1.5-flash")
 
 def analyze_cv(cv_text: str) -> str:
-    #prompt send to Gemini
     prompt = f"""
     You are an expert career coach. Analyze this CV and provide:
     1. A brief overall summary (2-3 sentences)
@@ -27,7 +28,7 @@ def analyze_cv(cv_text: str) -> str:
         "recommendations": ["...", "...", "..."]
     }}
     """
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(model=MODEL, contents=prompt)
     return response.text
 
 def match_job(cv_text: str, job_description: str) -> str:
@@ -52,7 +53,7 @@ def match_job(cv_text: str, job_description: str) -> str:
         "cover_letter": "..."
     }}
     """
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(model=MODEL, contents=prompt)
     return response.text
 
 def generate_interview_questions(cv_text: str, job_description: str) -> str:
@@ -87,5 +88,5 @@ def generate_interview_questions(cv_text: str, job_description: str) -> str:
         ]
     }}
     """
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(model=MODEL, contents=prompt)
     return response.text
